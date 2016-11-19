@@ -75,3 +75,10 @@ RUN apk upgrade --update && \
     echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 
 RUN echo 'java -version'
+
+# DATE
+RUN apk --update add --no-cache bash tzdata && \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" > /etc/timezone && \
+    apk del tzdata && \
+    rm -rf /var/cache
