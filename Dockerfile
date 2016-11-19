@@ -16,13 +16,6 @@ ENV JAVA_VERSION_MAJOR=8 \
     PATH=${PATH}:/opt/jdk/bin \
     GLIBC_VERSION=2.23-r3 \
     LANG=C.UTF-8
-    
-# DATE
-RUN apk --update add --no-cache bash tzdata && \
-    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo "Asia/Shanghai" > /etc/timezone && \
-    apk del tzdata && \
-    rm -rf /var/cache
 
 # do all in one step
 RUN apk upgrade --update && \
